@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daily Journal & Mood Tracker</title>
+  <!-- Link to external styles -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Load Chart.js from a CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Daily Journal & Mood Tracker</h1>
+    <!-- Icon button for toggling dark mode -->
+    <button id="toggleDarkMode" class="toggle">
+      <span id="toggleIcon"></span>
+    </button>
+  </header>
+  <div class="container">
+    <!-- Journal Entry Card -->
+    <div class="card">
+      <h2>Journal Entry</h2>
+      <textarea id="journalEntry" placeholder="Write your thoughts here..."></textarea>
+      <div class="sliders">
+        <div class="slider-group">
+          <label for="stressQuality">Stress Quality:</label>
+          <input type="range" id="stressQuality" name="stressQuality" min="1" max="10" value="5">
+          <span id="stressQualityValue">5</span>
+        </div>
+        <div class="slider-group">
+          <label for="sleepQuality">Sleep Quality:</label>
+          <input type="range" id="sleepQuality" name="sleepQuality" min="1" max="10" value="5">
+          <span id="sleepQualityValue">5</span>
+        </div>
+        <div class="slider-group">
+          <label for="productive">Productive:</label>
+          <input type="range" id="productive" name="productive" min="1" max="10" value="5">
+          <span id="productiveValue">5</span>
+        </div>
+        <div class="slider-group">
+          <label for="moodLevel">Mood Level:</label>
+          <input type="range" id="moodLevel" name="moodLevel" min="1" max="10" value="5">
+          <span id="moodLevelValue">5</span>
+        </div>
+        <div class="slider-group">
+          <label for="hoursSlept">Hours Slept:</label>
+          <input type="range" id="hoursSlept" name="hoursSlept" min="0" max="12" value="7">
+          <span id="hoursSleptValue">7</span>
+        </div>
+      </div>
+      <br>
+      <!-- Single button now handles analysis, saving, and AI mood estimation -->
+      <button id="analyzeMood" class="button">Analyze Mood & Save Journal</button>
+      <div id="sentimentResult" class="legend"></div>
+      <div class="legend">
+        <p><strong>Sentiment Score Explanation:</strong></p>
+        <ul>
+          <li><strong>Negative:</strong> Score less than 0 indicates negative sentiment.</li>
+          <li><strong>Neutral:</strong> Score equal to 0 indicates neutral sentiment.</li>
+          <li><strong>Positive:</strong> Score greater than 0 indicates positive sentiment.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Mood Trend Visualization Card -->
+    <div class="card">
+      <h2>Mood Trends</h2>
+      <canvas id="moodChart" width="400" height="200"></canvas>
+    </div>
+  </div>
+
+  <!-- Modal for displaying saved journal entry -->
+  <div id="journalModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Journal Entry for <span id="modalDate"></span></h2>
+      <p id="modalJournalText"></p>
+      <p><strong>Stress Quality:</strong> <span id="modalStressQuality"></span></p>
+      <p><strong>Sleep Quality:</strong> <span id="modalSleepQuality"></span></p>
+      <p><strong>Productivity:</strong> <span id="modalProductivity"></span></p>
+      <p><strong>Mood Level:</strong> <span id="modalMoodLevel"></span></p>
+      <p><strong>Hours Slept:</strong> <span id="modalHoursSlept"></span></p>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

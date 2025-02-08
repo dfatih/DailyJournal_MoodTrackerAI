@@ -1,0 +1,16 @@
+{
+  "name": "daily-journal-mood-tracker",
+  "version": "1.0.0",
+  "description": "A journaling app that provides daily writing prompts, mood tracking, and AI insights using sentiment analysis and OpenAI.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "chart.js": "^4.0.0",
+    "dotenv": "^16.0.0",
+    "electron": "^25.0.0",
+    "openai": "^3.1.0",
+    "sentiment": "^5.0.1"
+  }
+}
